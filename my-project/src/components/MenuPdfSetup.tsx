@@ -1,7 +1,6 @@
 "use client";
 
 // import { SingleImageDropzone } from "@/components/edgestore/SingleImageUpload";
-import { useEdgeStore } from "@/utils/edgestore";
 import { zodResolver} from "@hookform/resolvers/zod";
 import { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -28,6 +27,7 @@ import Image from "next/image";
 //   getMenuIdUsingEntityId,
 // } from "@/server/actions/menu.actions";
 import { Preahvihear } from "next/font/google";
+import { useEdgeStore } from "@/lib/edgeStore";
 
 const formSchema = z.object({
 	pdfMenuName: z
@@ -283,40 +283,7 @@ export function MenuPdfSetup({ entityId }: { entityId: string }) {
 							/>
 						</div>
 					 <div className="w-[80vw] pt-2">
-              {values?.map(
-                (value, index) => (
-                  // value.url != "" && (
-                  <div className="flex gap-2 py-2">
-                    <div className="w-25 object-contain">
-                      <img
-                        className="h-96 w-48 rounded-md object-cover"
-                        src={value.url}
-                        alt={typeof value === "string" ? value : value.fileName}
-                      />
-                    </div>
-                    <div>
-                      <Input
-                        key={value.key}
-                        name="fileName"
-                        type="text"
-                        alt={`Change name input for ${value.fileName}`}
-                        value={value.fileName} // Ensure the input reflects the current fileName
-                        onChange={(e) => handleNameChange(e, index)}
-                      />
-                      undefined
-                      <Input
-                        key={value.key}
-                        name="fileName"
-                        type="text"
-                        alt={`Change name input for ${value.fileName}`}
-                        value={value.fileOrder} // Ensure the input reflects the current fileName
-                        onChange={(e) => handleOrderChange(e, index)}
-                      />
-                    </div>
-                  </div>
-                ),
-                // ),
-              )}
+          
             </div> 
 
 						<Button
